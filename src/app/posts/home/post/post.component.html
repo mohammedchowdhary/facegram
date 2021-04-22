@@ -1,0 +1,72 @@
+<div class="container ">
+  <div class="row">
+      <div class="col-12 offset-md-1 col-md-10 d-flex align-items-center justify-content-start header">
+        <div>
+          <img [src]="post.creator.profile_pic" class="rounded-circle" alt="..." width="30" height="30">
+        </div>
+        <div class="ml-2">
+          <a class="mb-0">{{ post.creator.username }}</a>
+          <p class="my-0"><time class="text-muted">3 hours ago</time></p>
+        </div>
+        <div class="ml-auto">
+            <i class="icon ion-md-more more-option"></i>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="container-fluid p-0">
+  <div class="row">
+    <div class="col-12 offset-sm-1 col-sm-10 offset-md-2 col-md-8">
+      <img [src]="post.imagePath" alt="" class="img-fluid" >
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <ul class="nav d-flex like-comment align-items-center justify-content-around mt-1">
+        <li class="nav-item">
+          <a (click)="onLikeUnlike()"
+          *ngIf="!isLiked"><i class="icon ion-ios-heart-empty notLiked"></i>
+        </a>
+          <a (click)="onLikeUnlike()"
+          *ngIf="isLiked"><i class="icon ion-ios-heart liked"></i>
+        </a>
+        </li>
+        <li class="nav-item">
+          <a (click)="onToggleComment()"><i class="far fa-comment"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="mb-2">
+    <a>{{post.likes.length}} likes</a>
+  </div>
+</div>
+<div class="container comments">
+  <div class="row ">
+    <div class="col-12 offset-md-1 col-md-10" *ngFor="let comment of post.comments">
+      <ul class="d-flex align-items-center list-unstyled mb-1">
+        <li>
+          <a>{{ comment.creator.username}}</a>
+          <span class="ml-2">{{ comment.text }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <form #commentForm="ngForm" (submit)="onCreateComment(commentForm)"
+  class="justify-content-center form-inline"
+  *ngIf="isShowComments"
+  >
+    <div class="input-group">
+        <input type="text" class="form-control"
+        placeholder="Write a Comment"
+        name="comment"
+        ngModel
+        required>
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">Post</button>
+        </div>
+    </div>
+</form>
+</div>

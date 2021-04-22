@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-12 my-3">
+      <div class="d-flex flex-column align-items-center justify-content-center">
+          <img [src]="user?.profile_pic" alt="" class="rounded-circle mb-2" width="100" height="100">
+          <p class="mb-1">{{ user?.name}}</p>
+          <span class="bio text-muted">{{ user?.description}}</span>
+          <div class="action mt-3" *ngIf="!loggedInUserPage">
+            <a class="btn btn-block btn-primary py-0" (click)="onSendFriendrequest()"
+            *ngIf="!isFriend && !isRequestSent && !isRequestReceived">Add Friend</a>
+            <a class="btn btn-block btn-primary py-0" (click)="onCancelRequest()"
+            *ngIf="isRequestSent">Cancel request</a>
+            <a class="btn btn-block btn-primary py-0" (click)="onAcceptRequest()"
+            *ngIf="isRequestReceived">Accept Request</a>
+            <a class="btn btn-block btn-primary py-0" *ngIf="isFriend">Friend</a>
+          </div>
+          <div class="action mt-3" *ngIf="loggedInUserPage">
+            <a class="btn btn-block btn-primary py-0"
+            [routerLink]="['/user', 'edit-profile']">Edit Profile</a>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <div class="border profile-action">
+      <div class="d-flex border-bottom">
+        <a (click)="visitPosts()">
+          <div class="d-flex justify-content-center align-items-center flex-column border-right square">
+            <i class="icon ion-ios-camera profile-icon"></i>
+            <h6>Post <span class="text-muted"></span>{{user?.posts.length }}</h6>
+          </div>
+        </a>
+        <div class="square d-flex justify-content-center align-items-center flex-column">
+          <i class="icon ion-ios-heart profile-icon"></i>
+          <h6>Likes <span class="text-muted">{{ user?.likes }}</span></h6>
+        </div>
+      </div>
+      <div class="d-flex">
+        <a [routerLink]="['/user', 'friends']">
+          <div class="d-flex justify-content-center align-items-center flex-column border-right square">
+              <i class="icon ion-ios-people profile-icon"></i>
+              <h6>Friends</h6>
+            </div>
+        </a>
+        <div class="square d-flex justify-content-center align-items-center flex-column">
+          <i class="icon ion-ios-contacts profile-icon"></i>
+          <h6>Post</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

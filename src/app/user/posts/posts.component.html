@@ -1,0 +1,23 @@
+<div class="d-flex flex-row  align-items-center border-bottom justify-content-around">
+  <div>
+      <i (click)="checkGrid()"
+      [ngClass]="{'text-primary': !isGrid}"
+      class="icon ion-md-grid grid"></i>
+  </div>
+  <div>
+      <i (click)="checkGrid()"
+      [ngClass]="{'text-primary': isGrid}"
+      class="icon ion-md-reorder list"></i>
+  </div>
+</div>
+
+<div class="container-fluid p-0" *ngIf="!isGrid">
+  <div class="row">
+    <div class="col-4 pads" *ngFor="let post of posts.reverse()">
+      <img [src]="post.imagePath">
+    </div>
+  </div>
+</div>
+<div *ngIf="isGrid">
+  <app-post *ngFor="let post of posts.reverse()" [post]="post"></app-post>
+</div>

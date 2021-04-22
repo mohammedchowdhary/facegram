@@ -1,0 +1,44 @@
+.header {
+  height: 60px;
+}
+
+a{
+  font-weight: 500;
+  font-size: 90;
+}
+p {
+  time {
+    font-size: 60%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+  }
+}
+.nav {
+  background-color: transparent;
+}
+
+//icons
+
+.more-option {
+  font-size: 24px;
+}
+.liked,.notLiked {
+  font-size: 32px;
+}
+.liked {
+  color: rgb(255, 30, 0);
+}
+
+//comments
+
+.like-comment {
+  height: 40px;;
+}
+
+.fa-comment {
+  font-size: 30px;
+}
+
+
+

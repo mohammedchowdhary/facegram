@@ -1,0 +1,16 @@
+<ul class="list-group list-group-flush">
+  <li class="list-group-item" *ngFor="let friend of friends">
+    <div class="d-flex align-items-center justify-content-start">
+      <div>
+        <img [src]="friend.profile_pic" class="rounded-circle" alt="..." width="50" height="50">
+      </div>
+      <div class="ml-3">
+        <h5 class="mb-0">{{ friend.name }}</h5>
+      </div>
+      <div class="ml-auto">
+          <a class="btn btn-secondary bg-light py-0"
+          (click)="onRemoveFriend(friend._id)">Unfriend</a>
+      </div>
+    </div>
+  </li>
+</ul>

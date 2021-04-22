@@ -1,0 +1,16 @@
+<form class="example-form m-5" [formGroup]='usersForm'>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Choose a user" [matAutocomplete]="auto" formControlName='userInput'>
+  </mat-form-field>
+  <span>Your choice is: {{usersForm.get('userInput').value | json}}</span>
+
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+    <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
+    <ng-container *ngIf="!isLoading">
+      <mat-option *ngFor="let user of filteredUsers" [value]="user">
+        <span [routerLink]="['/user', user._id]">{{ user.email }}</span>
+        <small> | ID: {{user._id}}</small>
+      </mat-option>
+    </ng-container>
+  </mat-autocomplete>
+</form>

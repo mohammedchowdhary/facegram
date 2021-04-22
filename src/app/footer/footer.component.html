@@ -1,0 +1,28 @@
+<div>
+    <input type="file" #imagePicker (change)="onImagePicked($event)">
+</div>
+<div>
+  <ul class="nav text-center fixed-bottom justify-content-around align-items-center">
+      <li >
+          <a routerLink="/" routerLinkActive="onactive" [routerLinkActiveOptions]="{exact: true}"><i class="icon ion-md-home footer-icon"></i></a>
+      </li>
+      <li >
+          <a routerLink="/search" routerLinkActive="onactive">
+            <i class="icon ion-md-search footer-icon"></i>
+          </a>
+      </li>
+      <li >
+          <a (click)="imagePicker.click()"><i class="icon ion-md-add footer-icon"></i></a>
+      </li>
+      <li >
+          <a routerLink="/friendrequest" routerLinkActive="onactive">
+            <i class="icon ion-md-people footer-icon"></i>
+          </a>
+      </li>
+      <li >
+          <a routerLink="/user" routerLinkActive="onactive" [routerLinkActiveOptions]="{exact: true}">
+            <i class="icon ion-md-person footer-icon"></i>
+          </a>
+      </li>
+  </ul>
+</div>
